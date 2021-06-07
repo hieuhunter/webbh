@@ -20,7 +20,7 @@ import {
 async function apiaddGiohang(gio_hang) {
 	const { data } = await axios({
 		method: 'GET',
-		url: 'http://127.0.0.1:8000/api/addgiohang',
+		url: `${process.env.REACT_APP_API_URL}/api/addgiohang`,
 		params: gio_hang,
 		headers: {
 			Accept: 'application/json',
@@ -50,7 +50,7 @@ export function* addGiohangWatcher() {
 async function apiGiohang() {
 	const { data } = await axios({
 		method: 'GET',
-		url: `http://127.0.0.1:8000/api/danhsach_gh`,
+		url: `${process.env.REACT_APP_API_URL}/api/danhsach_gh`,
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export function* GiohangWatcher() {
 async function apixoaGiohang(gio_hang) {
 	const { data } = await axios({
 		method: 'DELETE',
-		url: `http://127.0.0.1:8000/api/xoagh`,
+		url: `${process.env.REACT_APP_API_URL}/api/xoagh`,
 		params: gio_hang,
 		headers: {
 			Accept: 'application/json',
