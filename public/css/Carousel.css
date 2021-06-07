@@ -1,0 +1,41 @@
+.react-multi-carousel-list carousel-container {
+  position: relative !important;
+  -ms-touch-action: pan-Y !important;
+  touch-action: manipulation !important;
+  -moz-backface-visibility: hidden !important;
+}
+.react-multi-carousel-track {
+  -ms-touch-action: pan-y !important;
+  touch-action: pan-y !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.react-multi-carousel-item .react-multi-carousel-item--active px-3 .col-lg-3 {
+  max-width: 100% !important;
+}
+.categories__item {
+  height: 270px !important;
+  position: relative;
+}
+.owl-carousel .owl-item {
+  min-height: 1px !important;
+  float: left !important;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+}
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+.owl-carousel .owl-stage {
+  position: relative;
+  -ms-touch-action: pan-Y;
+  touch-action: manipulation;
+  -moz-backface-visibility: hidden;
+}
+.categories__slider .col-lg-3 {
+  max-width: 100% i !important;
+}
