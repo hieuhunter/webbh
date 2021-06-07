@@ -4,7 +4,10 @@ import {
 	DANGKY_FAILED,
 	DANGNHAP_REQUESTED,
 	DANGNHAP_SUCCEED,
-	DANGNHAP_FAILED
+	DANGNHAP_FAILED,
+	DANGXUAT_REQUESTED,
+	DANGXUAT_SUCCEED,
+	DANGXUAT_FAILED
 } from 'redux/constants';
 
 const initialState = {
@@ -15,6 +18,11 @@ const initialState = {
 		errors: {}
 	},
 	register: {
+		user: {},
+		is_loading: false,
+		errors: {}
+	},
+	logout: {
 		user: {},
 		is_loading: false,
 		errors: {}
@@ -75,6 +83,32 @@ const authReducer = (state = initialState, action) => {
 					...state.login,
 					errors: action.payload.errors,
 					is_loading: false
+				}
+			};
+		// Logout
+		case DANGXUAT_REQUESTED:
+			return {
+				...state,
+				logout: {
+					...state.logout,
+					is_loading: true
+				}
+			};
+		case DANGXUAT_SUCCEED:
+			return {
+				...state,
+				logout: {
+					...state.logout,
+					user: action.payload.user,
+					is_loading: false
+				}
+			};
+		case DANGXUAT_FAILED:
+			return {
+				...state,
+				logout: {
+					...state.logout,
+					errors: action.payload.errors
 				}
 			};
 		default:

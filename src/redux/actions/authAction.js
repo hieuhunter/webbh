@@ -5,7 +5,10 @@ import {
 	DANGNHAP_REQUESTED,
 	DANGNHAP_SUCCEED,
 	DANGNHAP_FAILED,
-	CHECK_LOGIN
+	CHECK_LOGIN,
+	DANGXUAT_REQUESTED,
+	DANGXUAT_SUCCEED,
+	DANGXUAT_FAILED
 } from 'redux/constants';
 
 export const dangkyRequestedAction = (user) => ({
@@ -48,4 +51,24 @@ export const dangnhapFailedAction = (errors) => ({
 });
 export const checkloginAction = () => ({
 	type: CHECK_LOGIN
+});
+// logout
+
+export const dangxuatRequestedAction = (user) => ({
+	type: DANGXUAT_REQUESTED,
+	payload: {
+		user: user
+	}
+});
+export const dangxuatSucceedAction = (user) => ({
+	type: DANGXUAT_SUCCEED,
+	payload: {
+		user: user
+	}
+});
+export const dangxuatFailedAction = (errors) => ({
+	type: DANGXUAT_FAILED,
+	payload: {
+		errors: errors
+	}
 });

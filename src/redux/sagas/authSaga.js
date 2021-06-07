@@ -4,9 +4,11 @@ import {
 	dangkyFailedAction,
 	dangkySucceedAction,
 	dangnhapSucceedAction,
-	dangnhapFailedAction
+	dangnhapFailedAction,
+	dangxuatSucceedAction,
+	dangxuatFailedAction
 } from 'redux/actions/authAction';
-import { CHECK_LOGIN, DANGKY_REQUESTED, DANGNHAP_REQUESTED } from 'redux/constants';
+import { CHECK_LOGIN, DANGKY_REQUESTED, DANGNHAP_REQUESTED, DANGXUAT_REQUESTED } from 'redux/constants';
 
 async function apiRegister(user) {
 	const { data } = await axios({
@@ -108,4 +110,38 @@ export function* authLoginWatcher() {
 }
 export function* checkloginWatcher() {
 	yield takeLatest(CHECK_LOGIN, check_login);
+}
+// Logout
+
+async function apiLogout(user) {
+	const { data } = await axios({
+		method: 'GET',
+		url: `${process.env.REACT_APP_API_URL}/logout`,
+
+		data: user,
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		}
+	});
+	return data;
+}
+
+function* authLogout() {
+	try {
+		const res = yield call(apiLogout);
+		if (res.success) {
+			yield put(dangxuatSucceedAction(res.data));
+			window.location.replace('/login');
+		} else {
+			yield put(dangxuatFailedAction(res.errors));
+			window.localStorage.setItem('token', res.data.access_token);
+		}
+	} catch (err) {
+		yield put(dangxuatFailedAction(err.message));
+	}
+}
+
+export function* authLogoutWatcher() {
+	yield takeLatest(DANGXUAT_REQUESTED, authLogout);
 }

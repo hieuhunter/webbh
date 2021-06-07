@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { danhmucRequestedAction } from 'redux/actions/danhmucAction';
-import { checkloginAction } from 'redux/actions/authAction';
+import { checkloginAction, dangxuatRequestedAction } from 'redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { giohangRequestedAction } from 'redux/actions/giohangAction';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -17,17 +17,19 @@ const tongGia = function (arr, qty, price) {
 		return a + b[qty] * b.sanpham[price];
 	}, 0);
 };
-
 const Layout = ({ children, isMenu = false }) => {
 	const dispatch = useDispatch();
 	const dsDanhmuc = useSelector((state) => state.danh_muc.ds_danh_muc);
 	const login = useSelector((state) => state.auth.login.user);
 	const gioHang = useSelector((state) => state.gio_hang.gio_hang);
+	const handleLogout = useSelector((state) => state.auth.logout);
+	const history = useHistory();
 
 	useEffect(() => {
 		dispatch(checkloginAction());
 		dispatch(danhmucRequestedAction());
 		dispatch(giohangRequestedAction());
+		dispatch(dangxuatRequestedAction());
 	}, [dispatch]);
 
 	return (
@@ -85,6 +87,12 @@ const Layout = ({ children, isMenu = false }) => {
 										<Link to="/thongtin">
 											<i className="fa fa-user" />
 											{login.user_name}
+										</Link>
+									</div>
+									<div className="header__top__right__auth ml-3" onClick={handleLogout}>
+										<Link to="/">
+											<i className="fa fa-user" />
+											logout
 										</Link>
 									</div>
 								</div>
