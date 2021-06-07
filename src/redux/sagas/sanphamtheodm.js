@@ -6,7 +6,7 @@ import { SPTHEODM_REQUESTED } from 'redux/constants';
 async function apiSanphamtheodm(id) {
 	const { data } = await axios({
 		method: 'GET',
-		url: `http://127.0.0.1:8000/api/danhmuc/${id}`
+		url: `${process.env.REACT_APP_API_URL}/danhmuc/${id}`
 	});
 	return data;
 }

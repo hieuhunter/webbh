@@ -6,7 +6,7 @@ import { thongtinFailedAction, thongtinSucceedAction } from 'redux/actions/thong
 async function apiThongtin(user) {
 	const { data } = await axios({
 		method: 'GET',
-		url: 'http://127.0.0.1:8000/api/thongtin',
+		url: `${process.env.REACT_APP_API_URL}/thongtin`,
 		data: user,
 		headers: {
 			Accept: 'application/json',

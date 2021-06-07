@@ -6,7 +6,7 @@ import { DANHMUC_REQUESTED } from 'redux/constants';
 async function apiDanhmuc() {
 	const { data } = await axios({
 		method: 'GET',
-		url: 'http://127.0.0.1:8000/api/danhmuc'
+		url: `${process.env.REACT_APP_API_URL}/danhmuc`
 	});
 	return data;
 }

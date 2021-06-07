@@ -6,7 +6,7 @@ import { SANPHAM_REQUESTED } from 'redux/constants';
 async function apiSanPham() {
 	const { data } = await axios({
 		method: 'GET',
-		url: 'http://127.0.0.1:8000/api/sanpham'
+		url: `${process.env.REACT_APP_API_URL}/sanpham`
 	});
 	return data;
 }

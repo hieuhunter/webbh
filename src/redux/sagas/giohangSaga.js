@@ -108,7 +108,9 @@ export function* xoaGiohangWatcher() {
 async function apixoaallGiohang(gio_hang) {
 	const { data } = await axios({
 		method: 'DELETE',
-		url: `http://127.0.0.1:8000/api/xoaall`,
+
+		url: `${process.env.REACT_APP_API_URL}/xoaall`,
+
 		params: gio_hang,
 		headers: {
 			Accept: 'application/json',

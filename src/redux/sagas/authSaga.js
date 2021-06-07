@@ -11,7 +11,8 @@ import { CHECK_LOGIN, DANGKY_REQUESTED, DANGNHAP_REQUESTED } from 'redux/constan
 async function apiRegister(user) {
 	const { data } = await axios({
 		method: 'POST',
-		url: 'http://127.0.0.1:8000/api/register',
+		url: `${process.env.REACT_APP_API_URL}/register`,
+
 		data: user,
 		headers: {
 			Accept: 'application/json',
