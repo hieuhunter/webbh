@@ -45,7 +45,7 @@ export function* authRegisterWatcher() {
 async function apiLogin(user) {
 	const { data } = await axios({
 		method: 'POST',
-		url: `${process.env.REACT_APP_API_URL}/api/login`,
+		url: `${process.env.REACT_APP_API_URL}/login`,
 		data: user,
 		headers: {
 			Accept: 'application/json',
@@ -57,7 +57,7 @@ async function apiLogin(user) {
 async function apicheck_Login(user) {
 	const { data } = await axios({
 		method: 'GET',
-		url: `${process.env.REACT_APP_API_URL}/api/user`,
+		url: `${process.env.REACT_APP_API_URL}/user`,
 		data: user,
 		headers: {
 			Accept: 'application/json',
