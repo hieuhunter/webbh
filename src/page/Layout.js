@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { danhmucRequestedAction } from 'redux/actions/danhmucAction';
 import { checkloginAction, dangxuatRequestedAction } from 'redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,8 +23,6 @@ const Layout = ({ children, isMenu = false }) => {
 	const login = useSelector((state) => state.auth.login.user);
 	const gioHang = useSelector((state) => state.gio_hang.gio_hang);
 	const handleLogout = useSelector((state) => state.auth.logout);
-	const history = useHistory();
-
 	useEffect(() => {
 		dispatch(checkloginAction());
 		dispatch(danhmucRequestedAction());
