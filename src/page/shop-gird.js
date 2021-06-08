@@ -162,7 +162,7 @@ const Shopgird = () => {
 								<a href="#!">2</a>
 								<a href="#!">3</a>
 								<a href="!#">
-									<i class="fa fa-long-arrow-right"></i>
+									<i className="fa fa-long-arrow-right"></i>
 								</a>
 							</div>
 						</div>
