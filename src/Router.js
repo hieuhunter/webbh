@@ -9,6 +9,7 @@ import Login from './page/Login';
 import Register from './page/Register';
 import React from 'react';
 import Thongtin from './page/thongtin';
+import paytc from 'page/thanhtoantc';
 
 const Routes = () => {
 	return (
@@ -23,6 +24,7 @@ const Routes = () => {
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/register" component={Register} />
 				<Route exact path="/thongtin" component={Thongtin} />
+				<Route exact path="/paytc" component={paytc} />
 			</Switch>
 		</Router>
 	);

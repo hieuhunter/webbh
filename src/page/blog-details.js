@@ -16,7 +16,7 @@ const Blogdetails = () => {
 						<div className="row">
 							<div className="col-lg-12">
 								<div className="blog__details__hero__text">
-									<h2>ABC</h2>
+									<h2>Giới thiệu sản phẩm</h2>
 
 									<ul>
 										<li>By Michael Scofield</li>

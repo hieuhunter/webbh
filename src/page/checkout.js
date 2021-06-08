@@ -299,14 +299,18 @@ const Checkout = () => {
 														</label>
 													</div>
 													{hoadon.is_loading ? (
-														<button type="submit" className="site-btn" disabled>
-															<span className="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true" />
-															PLACE ORDER
-														</button>
+														<Link to="/paytc">
+															<button type="submit" className="site-btn" disabled>
+																<span className="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true" />
+																PLACE ORDER
+															</button>
+														</Link>
 													) : (
-														<button type="submit" className="site-btn">
-															PLACE ORDER
-														</button>
+														<Link to="/paytc">
+															<button type="submit" className="site-btn">
+																PLACE ORDER
+															</button>
+														</Link>
 													)}
 												</div>
 											</div>
