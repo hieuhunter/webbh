@@ -22,6 +22,7 @@ const Layout = ({ children, isMenu = false }) => {
 	const dsDanhmuc = useSelector((state) => state.danh_muc.ds_danh_muc);
 	const login = useSelector((state) => state.auth.login.user);
 	const gioHang = useSelector((state) => state.gio_hang.gio_hang);
+
 	/* const handleLogout = useSelector((state) => state.auth.logout); */
 
 	useEffect(() => {
@@ -183,8 +184,10 @@ const Layout = ({ children, isMenu = false }) => {
 
 							<Dropdown.Menu>
 								{dsDanhmuc.danh_muc.map((dm) => (
-									<Dropdown.Item to={`/shop-gird/${dm.id_dm}`} key={dm.id}>
-										{dm.tendm}
+									<Dropdown.Item>
+										<Link to={`/shop-gird/${dm.id_dm}`} key={dm.id}>
+											{dm.tendm}
+										</Link>
 									</Dropdown.Item>
 								))}
 							</Dropdown.Menu>
