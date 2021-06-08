@@ -22,14 +22,18 @@ const Layout = ({ children, isMenu = false }) => {
 	const dsDanhmuc = useSelector((state) => state.danh_muc.ds_danh_muc);
 	const login = useSelector((state) => state.auth.login.user);
 	const gioHang = useSelector((state) => state.gio_hang.gio_hang);
-	const handleLogout = useSelector((state) => state.auth.logout);
+	/* const handleLogout = useSelector((state) => state.auth.logout); */
+
 	useEffect(() => {
 		dispatch(checkloginAction());
 		dispatch(danhmucRequestedAction());
 		dispatch(giohangRequestedAction());
-		dispatch(dangxuatRequestedAction());
 	}, [dispatch]);
 
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(dangxuatRequestedAction());
+	};
 	return (
 		<>
 			<header className="header">
@@ -88,7 +92,7 @@ const Layout = ({ children, isMenu = false }) => {
 										</Link>
 									</div>
 									<div className="header__top__right__auth ml-3" onClick={handleLogout}>
-										<Link to="/">
+										<Link to="/login">
 											<i className="fa fa-user" />
 											logout
 										</Link>
@@ -179,7 +183,9 @@ const Layout = ({ children, isMenu = false }) => {
 
 							<Dropdown.Menu>
 								{dsDanhmuc.danh_muc.map((dm) => (
-									<Dropdown.Item to={`/shop-gird/${dm.id_dm}`}>{dm.tendm}</Dropdown.Item>
+									<Dropdown.Item to={`/shop-gird/${dm.id_dm}`} key={dm.id}>
+										{dm.tendm}
+									</Dropdown.Item>
 								))}
 							</Dropdown.Menu>
 						</Dropdown>

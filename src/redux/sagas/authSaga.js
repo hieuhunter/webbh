@@ -113,29 +113,25 @@ export function* checkloginWatcher() {
 }
 // Logout
 
-async function apiLogout(user) {
+async function apiLogout() {
 	const { data } = await axios({
 		method: 'GET',
 		url: `${process.env.REACT_APP_API_URL}/logout`,
-
-		data: user,
 		headers: {
 			Accept: 'application/json',
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + window.localStorage.getItem('token')
 		}
 	});
 	return data;
 }
 
-function* authLogout() {
+function* Logout() {
 	try {
 		const res = yield call(apiLogout);
 		if (res.success) {
 			yield put(dangxuatSucceedAction(res.data));
 			window.location.replace('/login');
-		} else {
-			yield put(dangxuatFailedAction(res.errors));
-			window.localStorage.setItem('token', res.data.access_token);
 		}
 	} catch (err) {
 		yield put(dangxuatFailedAction(err.message));
@@ -143,5 +139,5 @@ function* authLogout() {
 }
 
 export function* authLogoutWatcher() {
-	yield takeLatest(DANGXUAT_REQUESTED, authLogout);
+	yield takeLatest(DANGXUAT_REQUESTED, Logout);
 }
