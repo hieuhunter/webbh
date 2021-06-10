@@ -20,7 +20,7 @@ const tongGia = function (arr, qty, price) {
 const Layout = ({ children, isMenu = false }) => {
 	const dispatch = useDispatch();
 	const dsDanhmuc = useSelector((state) => state.danh_muc.ds_danh_muc);
-	const login = useSelector((state) => state.auth.login.user);
+	const login = useSelector((state) => state.auth.login);
 	const gioHang = useSelector((state) => state.gio_hang.gio_hang);
 
 	/* const handleLogout = useSelector((state) => state.auth.logout); */
@@ -81,23 +81,21 @@ const Layout = ({ children, isMenu = false }) => {
 										</ul>
 									</div>
 									<div className="header__top__right__auth">
-										<Link to="/Login">
-											<i className="fa fa-user" /> Login
-										</Link>
+										<Link to="/Login">Login</Link>
 									</div>
-
-									<div className="header__top__right__auth ml-3">
-										<Link to="/thongtin">
-											<i className="fa fa-user" />
-											{login.user_name}
-										</Link>
-									</div>
-									<div className="header__top__right__auth ml-3" onClick={handleLogout}>
-										<Link to="/login">
-											<i className="fa fa-user" />
-											logout
-										</Link>
-									</div>
+									{login.is_authenticated && (
+										<div>
+											<div className="header__top__right__auth ml-3">
+												<Link to="/thongtin">
+													<i className="fa fa-user" />
+													{login.user?.user_name}
+												</Link>
+											</div>
+											<div className="header__top__right__auth ml-3" onClick={handleLogout}>
+												<Link to="/login">logout</Link>
+											</div>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
@@ -184,10 +182,8 @@ const Layout = ({ children, isMenu = false }) => {
 
 							<Dropdown.Menu>
 								{dsDanhmuc.danh_muc.map((dm) => (
-									<Dropdown.Item>
-										<Link to={`/shop-gird/${dm.id_dm}`} key={dm.id}>
-											{dm.tendm}
-										</Link>
+									<Dropdown.Item key={dm.id}>
+										<Link to={`/shop-gird/${dm.id_dm}`}>{dm.tendm}</Link>
 									</Dropdown.Item>
 								))}
 							</Dropdown.Menu>

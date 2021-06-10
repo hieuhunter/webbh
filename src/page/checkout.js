@@ -32,7 +32,9 @@ const Checkout = () => {
 			email: values.email,
 			password: values.password,
 			sdt: values.sdt,
-			dia_chi: values.dia_chi
+			dia_chi: values.dia_chi,
+			phi_van_chuyen: values.phi_van_chuyen,
+			Ma_buudien: values.Ma_buudien
 		};
 		console.log(user);
 		dispatch(hoadonRequestedAction(user));
@@ -299,18 +301,18 @@ const Checkout = () => {
 														</label>
 													</div>
 													{hoadon.is_loading ? (
-														<Link to="/paytc">
+														<div>
 															<button type="submit" className="site-btn" disabled>
 																<span className="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true" />
 																PLACE ORDER
 															</button>
-														</Link>
+														</div>
 													) : (
-														<Link to="/paytc">
+														<div>
 															<button type="submit" className="site-btn">
 																PLACE ORDER
 															</button>
-														</Link>
+														</div>
 													)}
 												</div>
 											</div>
