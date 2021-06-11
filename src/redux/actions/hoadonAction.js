@@ -1,14 +1,14 @@
 import { HOADON_REQUESTED, HOADON_SUCCEED, HOADON_FAILED } from 'redux/constants';
-export const hoadonRequestedAction = (id) => ({
+export const hoadonRequestedAction = (checkout) => ({
 	type: HOADON_REQUESTED,
 	payload: {
-		id: id
+		checkout: checkout
 	}
 });
-export const hoadonSucceedAction = (san_pham) => ({
+export const hoadonSucceedAction = (hoa_don) => ({
 	type: HOADON_SUCCEED,
 	payload: {
-		san_pham: san_pham
+		hoa_don: hoa_don
 	}
 });
 export const haodonFailedAction = (errors) => ({

@@ -26,7 +26,7 @@ const Checkout = () => {
 		Ma_buudien: ''
 	};
 	const onSubmit = (values) => {
-		const user = {
+		const checkout = {
 			ho_ten: values.ho_ten,
 			user_name: values.user_name,
 			email: values.email,
@@ -34,10 +34,11 @@ const Checkout = () => {
 			sdt: values.sdt,
 			dia_chi: values.dia_chi,
 			phi_van_chuyen: values.phi_van_chuyen,
-			Ma_buudien: values.Ma_buudien
+			Ma_buudien: values.Ma_buudien,
+			gio_hang: gioHang.ghang.ctgiohang
 		};
-		console.log(user);
-		dispatch(hoadonRequestedAction(user));
+		console.log(checkout);
+		dispatch(hoadonRequestedAction(checkout));
 	};
 	const tongGia = function (arr, qty, price) {
 		return arr.reduce(function (a, b) {
